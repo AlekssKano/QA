@@ -1,0 +1,11 @@
+Environment
+OS
+Title
+Precondition
+Steps
+Actual result
+Expected result
+Link
+Reproduced Environment
+Not reproduced Environment
+Bug comments
