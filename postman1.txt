@@ -1,0 +1,198 @@
+Postman.
+HW_1
+
+Создать запросы в Postman.
+
+Protocol: http
+IP: 162.55.220.72
+Port: 5005
+
+EP_1
+Method: GET
+EndPoint: /get_method
+request url params: 
+ name: str
+ age: int
+
+162.55.220.72:5005/get_method?name=Aleks&age=25
+
+response: 
+[
+    "Aleks",
+    "25"
+]
+
+
+==================
+
+EP_2
+Method: POST
+EndPoint: /user_info_3
+request form data: 
+ name: str
+ age: int
+ salary: int
+
+response: 
+{
+    "age": "56",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "u_salary_1_5_year": 312000
+    },
+    "name": "Tom",
+    "salary": 78000
+}
+
+==================
+
+EP_3
+Method: GET
+EndPoint: /object_info_1
+request url params: 
+ name: str
+ age: int
+ weight: int
+
+162.55.220.72:5005//object_info_1?name=Lina&age=19&weight=56
+response: 
+{
+    "age": 19,
+    "daily_food": 0.672,
+    "daily_sleep": 140.0,
+    "name": "Lina"
+}
+
+==================
+
+EP_4
+Method: GET
+EndPoint: /object_info_2
+request url params: 
+ name: str
+ age: int
+ salary: int
+
+162.55.220.72:5005/object_info_2?name=Antonin&age=43&salary=80300
+
+response: 
+{
+    "person": {
+        "u_age": 43,
+        "u_name": [
+            "Antonin",
+            80300,
+            43
+        ],
+        "u_salary_5_years": 337260.0
+    },
+    "qa_salary_after_1.5_year": 264990.0,
+    "qa_salary_after_12_months": 216810.0,
+    "qa_salary_after_3.5_years": 305140.0,
+    "qa_salary_after_6_months": 160600,
+    "start_qa_salary": 80300
+}
+
+==================
+
+EP_5
+Method: GET
+EndPoint: /object_info_3
+request url params: 
+ name: str
+ age: int
+ salary: int
+
+162.55.220.72:5005/object_info_3?name=Thor&age=3000&salary=100
+
+response: 
+{
+    "age": "3000",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "pets": {
+            "cat": {
+                "age": 3,
+                "name": "Sunny"
+            },
+            "dog": {
+                "age": 4,
+                "name": "Luky"
+            }
+        },
+        "u_salary_1_5_year": 400
+    },
+    "name": "Thor",
+    "salary": 100
+}
+
+==================
+
+EP_6
+Method: GET
+EndPoint: /object_info_4
+request url params: 
+ name: str
+ age: int
+ salary: int
+
+162.55.220.72:5005/object_info_4?name=Luka&age=22&salary=18000
+
+response: 
+{
+    "age": 22,
+    "name": "Luka",
+    "salary": [
+        18000,
+        "36000",
+        "54000"
+    ]
+}
+
+==================
+
+EP_7
+Method: POST
+EndPoint: /user_info_2
+request form data: 
+ name: str
+ age: int
+ salary: int
+
+162.55.220.72:5005/user_info_2
+
+response: 
+{
+    "person": {
+        "u_age": 32,
+        "u_name": [
+            "Joy",
+            24000,
+            32
+        ],
+        "u_salary_5_years": 100800.0
+    },
+    "qa_salary_after_1.5_year": 79200.0,
+    "qa_salary_after_12_months": 64800.00000000001,
+    "qa_salary_after_3.5_years": 91200.0,
+    "qa_salary_after_6_months": 48000,
+    "start_qa_salary": 24000
+}
