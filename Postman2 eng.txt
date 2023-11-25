@@ -1,0 +1,176 @@
+W_2 Postman
+
+
+http://162.55.220.72:5005/first
+1. Submit a request.
+2. Status code 200
+pm.test("Status code is 200", function () {
+     pm.response.to.have.status(200);
+});
+3. Check that the body contains the correct string.
+pm.test("Body is correct", function(){
+     pm.response.to.have.body("This is the first response from server!ss")
+});
+
+http://162.55.220.72:5005/user_info_3
+1. Submit a request.
+pm.sendRequest('http://162.55.220.72:5005/user_info_3?name=Aleks&age=25&salary=1500', function (err, res) {
+     console.log(pm.response.json());
+})
+2. Status code 200
+pm.test('Status code is 200', function () {
+     pm.response.to.have.status(200);
+})
+3. Parse response body into json.
+var resp = pm.response.json();
+4. Check that the name in the response is equal to name s request (enter the name by hand.)
+pm.test('Name is manual', function () {
+     pm.expect(resp.name).to.eql('Aleks');
+})
+5. Check that the age in the response is equal to age s request (enter age by hand.)
+pm.test('Age is manual', function () {
+     pm.expect(+resp.age).to.eql(25);
+})
+6. Check that the salary in the response is equal to salary s request (enter salary by hand.)
+pm.test('Salary is manual', function () {
+     pm.expect(+resp.salary).to.eql(1500);
+})
+7. Parse request.
+let reqData = request.data;
+8. Check that the name in the response is equal to name s request (take name from request.)
+pm.test('Name + request', function () {
+     pm.expect(resp.name).to.eql(reqData.name);
+})
+9. Check that the age in the response is equal to age s request (take age from request.)
+pm.test('Age +request', function () {
+     pm.expect(resp.age).to.eql(reqData.age);
+})
+
+10. Check that the salary in the response is equal to salary s request (salary is taken from request.)
+pm.test('Salary + request', function () {
+     pm.expect(resp.salary).to.eql(+reqData.salary);
+})
+
+11. Print the family parameter from response to the console.
+console.log(resp.family)
+
+12. Check that u_salary_1_5_year in the response is equal to salary*4 (take salary from request)
+pm.test("Salary 1_5", function(){
+     pm.expect(resp.family.u_salary_1_5_year).to.eql(4*(+reqData.salary));
+});
+
+http://162.55.220.72:5005/object_info_3
+1. Submit a request.
+pm.sendRequest('http://162.55.220.72:5005/object_info_3?name=Lora&age=25&salary=1500', function (err, res) {
+     console.log(pm.response.json());
+})
+2. Status code 200
+pm.test("Status code is 200", function () {
+     pm.response.to.have.status(200);
+});
+3. Parse response body into json.
+var resp = pm.response.json();
+4. Parse request.
+var requestData = request.data
+5. Check that the name in the response is equal to the name s request (take the name from the request.)
+pm.test('Check name'), function (){
+     pm.expect(resp.name).to.eql(requestData.name)
+
+6. Check that the age in the response is equal to age s request (take age from request.)
+pm.test('Check age'), function(){
+     pm.expect(resp.age).to.eql(requestData.age)
+}
+//7. Check that the salary in the response is equal to salary s request (salary is taken from request.)
+  pm.test('Check salary', function(){
+      pm.expect(resp.salary).to.eql(+requestData.salary)
+})
+//8. Print the family parameter from response to the console.
+console.log(resp.family)
+
+//Check that the dog parameter has name parameters.
+var rfamily = resp.family
+var pets = rfamily.pets
+var dog = pets.dog
+var dog_name = dog.name
+console.log(dog.name)
+  pm.test("Check Dog_name", function(){
+      pm.expect(dog.name).to.eql(resp.family.pets.dog.name)
+  });
+  //10. Check that the dog parameter has age parameters.
+  var rfamily = resp.family
+var pets = rfamily.pets
+var dog = pets.dog
+var dog_age = dog.age
+console.log(dog.name)
+  pm.test("Check Dog_age", function(){
+      pm.expect(dog.age).to.eql(resp.family.pets.dog.age)
+  });
+  //eleven. Check that the name parameter is set to Luky.
+  var rfamily = resp.family
+var pets = rfamily.pets
+var dog = pets.dog
+var dog_name = dog.name
+console.log(dog.name)
+  pm.test("Check Dog_name_Lucky", function(){
+      pm.expect(dog.name).to.eql('Luky')
+  });
+  //12. Check that the age parameter is set to 4.
+  pm.test('Check age==4', function () {
+     pm.expect(dog.age).to.eql(4)
+});
+
+http://162.55.220.72:5005/object_info_4
+//1. Send a request.
+pm.sendRequest('http://162.55.220.72:5005/object_info_4?name=ToraDora&age=25&salary=1500', function (err, res) {
+     console.log(pm.response.json());
+})
+//2. Status code 200
+pm.test("Status code is 200", function () {
+     pm.response.to.have.status(200);
+});
+//Parse response body into json.
+var response = pm.response.json();
+// Parse request.
+var request = pm.request.url.query.toObject();
+//5. Check that the name in the response is equal to name s request (name taken from request.)
+pm.test("Check name", function () {
+    pm.expect(response.name).to.eql(request.name)
+});
+//6. Check that the age in the response is equal to the age from the request (take age from the request.)
+pm.test("Check Age", function(){
+     pm.expect(response.age).to.eql(+request.age)
+});
+//7. Print the salary parameter from request to the console.
+console.log(request.salary)
+//8. Print the salary parameter from response to the console.
+console.log(response.salary)
+//9. Print the 0th element of the salary parameter to the console from response.
+console.log(response.salary[0])
+//10. Print to the console the 1st element of the salary parameter, the salary parameter from response.
+console.log(response.salary[1])
+//eleven. Print the 2nd element of the salary parameter to the console - the salary parameter from response.
+console.log(response.salary[2])
+//12. Check that the 0th element of the salary parameter is equal to salary from request (salary is taken from request.)
+pm.test("[O] el check", function(){
+     pm.expect(response.salary[0]).to.eql(+request.salary)
+});
+
+// 13. Check that the 1st element of the salary parameter is equal to salary*2 from request (take salary from request.)
+pm.test("[1] el check", function(){
+     pm.expect(+response.salary[1]).to.eql(request.salary *2)
+});
+// 14. Check that the 2nd element of the salary parameter is equal to salary*3 from request (take salary from request.)
+pm.test("[2] el check", function(){
+     pm.expect(+response.salary[2]).to.eql(request.salary *3)
+});
+15. Create a name variable in the environment
+16. Create an age variable in the environment
+17. Create a salary variable in the environment
+18. Pass the name variable to the environment
+19. Pass the age variable to the environment
+20. Pass the salary variable to the environment
+21. Write a loop that will output to the console in order the elements of the list from the salary parameter.
+http://162.55.220.72:5005/object_info_4?name={{name}}&age={{age}}&salary={{salary}}
+for(let i= 0; i<3; i++){
+      console.log(response.salary[i])
+      }
